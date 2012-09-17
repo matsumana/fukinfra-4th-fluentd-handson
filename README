@@ -1,0 +1,11 @@
+「第4回 インフラ勉強会＠福岡 Fluentdハンズオン」で使う設定ファイルとソース。
+http://connpass.com/event/879/
+
+今回は1台のサーバでFluentdを2つ起動します（ポート:24224, 34224）
+
+etc/fluent/fluent.conf                 -> アプリケーションサーバ用設定ファイル
+etc/fluent/fluent2.conf                -> 集約サーバ用設定ファイル
+lib/fluent/plugin/in_hoge.rb           -> 動作確認のためにdebugログを出力するだけのinputプラグイン
+lib/fluent/plugin/in_tail_multiline.rb -> 複数行ログをtailするinputプラグイン
+write-multiline-log.rb                 -> 複数行ログを出力するスクリプト（テスト用）
+fluent-logger-sample.rb                -> fluent-loggerのサンプル
