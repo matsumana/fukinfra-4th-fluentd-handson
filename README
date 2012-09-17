@@ -9,3 +9,9 @@ lib/fluent/plugin/in_hoge.rb           -> 動作確認のためにdebugログを
 lib/fluent/plugin/in_tail_multiline.rb -> 複数行ログをtailするinputプラグイン
 write-multiline-log.rb                 -> 複数行ログを出力するスクリプト（テスト用）
 fluent-logger-sample.rb                -> fluent-loggerのサンプル
+
+・使用プラグイン
+fluent-plugin-rewrite-tag-filter
+fluent-plugin-mysql
+fluent-plugin-pghstore
+fluent-plugin-mongo
