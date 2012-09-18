@@ -1,3 +1,8 @@
+・インストールオプション
+英語キーボード
+UTCは使用しない
+パッケージ選択はMinimal + Base + "Development Tools"
+
 ・SELinux OFF (ハンズオンなので。。)
 sed -i "7,7s/enforcing/permissive/g" /etc/selinux/config
 
@@ -51,3 +56,18 @@ cd ruby-1.9.3-p194
 ./configure
 make
 make install
+
+・jemallocインストール
+cd /usr/local/src
+wget http://www.canonware.com/download/jemalloc/jemalloc-3.0.0.tar.bz2
+tar xvf jemalloc-3.0.0.tar.bz2
+cd jemalloc-3.0.0
+./configure
+make
+make install
+
+※実運用では必ずRuby1.9.3の最新+jemallocか、td-agentを使いましょう。
+(td-agentにはRuby1.9.3の最新+jemallocが含まれます)
+http://d.hatena.ne.jp/tagomoris/20120403/1333417657
+http://blog.riywo.com/2012/04/01/023321
+http://fluentd.org/doc/install.html
