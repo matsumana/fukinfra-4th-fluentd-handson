@@ -1,0 +1,53 @@
+・SELinux OFF (ハンズオンなので。。)
+sed -i "7,7s/enforcing/permissive/g" /etc/selinux/config
+
+・自動UPDATE OFF
+sed -i "7,7s/true/false/g" /etc/sysconfig/yum-autoupdate
+
+・yum-fastestmirrorインストール
+yum check-update
+yum install yum-fastestmirror
+sed -i "s/^#mirrorlist/mirrorlist/g" /etc/yum.repos.d/sl.repo
+sed -i "s/^#mirrorlist/mirrorlist/g" /etc/yum.repos.d/sl-other.repo
+
+・UPDATE
+yum update
+
+・デーモン停止 (ハンズオンなので色々止めます。。)
+while read SERVICE
+do
+  service $SERVICE stop
+  chkconfig $SERVICE off
+done << __EOL__
+atd
+ip6tables
+iptables
+kdump
+lvm2-monitor
+mdmonitor
+__EOL__
+
+・NTP自動起動
+chkconfig ntpd on
+
+・再起動
+reboot
+
+・ユーザ作成
+useradd fluent
+passwd fluent
+
+・Rubyインストール準備
+yum install epel-release
+sed -i "6,6s/1/0/g" /etc/yum.repos.d/epel.repo
+yum install --enablerepo=epel libyaml-devel
+yum install openssl-devel zlib-devel readline-devel
+
+・Rubyインストール
+cd /usr/local/src
+wget ftp://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p194.tar.gz
+tar xvf ruby-1.9.3-p194.tar.gz
+cd ruby-1.9.3-p194
+./configure
+make
+make install
