@@ -66,8 +66,15 @@ cd jemalloc-3.0.0
 make
 make install
 
-※実運用では必ずRuby1.9.3の最新+jemallocか、td-agentを使いましょう。
-(td-agentにはRuby1.9.3の最新+jemallocが含まれます)
+・jemalloc確認
+LD_PRELOADという環境変数にjemallocを指定して実行すれば、jemallocが有効になります。
+$ LD_PRELOAD=/usr/local/lib/libjemalloc.so ldd `which ruby`
+参考URL
 http://d.hatena.ne.jp/tagomoris/20120403/1333417657
 http://blog.riywo.com/2012/04/01/023321
+
+※実運用では必ずRuby1.9.3の最新+jemallocか、td-agentを使いましょう。
+(td-agentにはRuby1.9.3の最新+jemallocが含まれます)
+
+公式ドキュメント
 http://fluentd.org/doc/install.html
