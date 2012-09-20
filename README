@@ -1,4 +1,4 @@
-「第4回 インフラ勉強会＠福岡 Fluentdハンズオン」で使う設定ファイルとソース。
+「第4回 インフラ勉強会＠福岡 Fluentdハンズオン」で使う設定ファイルとソース
 http://connpass.com/event/879/
 
 今回は1台のサーバでFluentdを2つ起動します（ポート:24224, 34224）
@@ -15,3 +15,33 @@ fluent-plugin-rewrite-tag-filter
 fluent-plugin-mysql
 fluent-plugin-pghstore
 fluent-plugin-mongo
+
+・環境構築
+doc/00_initial_setting.txt             -> 今回のハンズオンでお配りしている仮想マシンのインストール内容
+doc/01_mongodb_install.txt             -> MongoDBのインストール例
+doc/01_mysql_install.txt               -> MySQLのインストール例
+doc/01_postgresql_install.txt          -> PostgreSQLのインストール例
+doc/02_apache_install.txt              -> Apacheのインストール例
+doc/03_fluentd_install.txt             -> Fluentのインストール例
+
+・今回のハンズオンで使用するサンプルのダウンロードとインストール
+$ git clone git://github.com/matsumana/fukinfra-4th-fluentd-handson.git
+$ cp -ip fukinfra-4th-fluentd-handson/lib/fluent/plugin/in_*.rb /etc/fluent/plugin
+$ cp -ip fukinfra-4th-fluentd-handson/etc/fluent/fluent*.conf /etc/fluent
+※/etc/fluent/fluent.conf と /etc/fluent/fluent2.conf は自分の環境に合わせて修正してください
+
+・Fluentd起動方法
+※fluentユーザで実行してください
+集約サーバ側 (ポート:34224)
+$ fluentd -c /etc/fluent/fluent2.conf -vv
+Web/APサーバ側 (ポート:24224)
+$ fluentd -c /etc/fluent/fluent.conf -vv
+
+・Fluentdの起動時に以下のエラーが出る場合は、
+  名前解決がきちんと出来るようにしてください。
+  (Fluentdの問題ではなく、OS側の問題です)
+
+2012-09-21 00:31:29 +0900: fluent/supervisor.rb:192:rescue in main_process: unexpected error error="getaddrinfo: Name or service not known"
+
+例)
+# echo '192.168.105.138 fluent00 fluent00.localdomain' >> /etc/hosts
