@@ -1,0 +1,47 @@
+・インストール
+※以下は公式バイナリ5.5をインストールする例です。バージョンは何でも良いです。
+yum localinstall \
+MySQL-client-5.5.27-1.el6.x86_64.rpm \
+MySQL-devel-5.5.27-1.el6.x86_64.rpm \
+MySQL-server-5.5.27-1.el6.x86_64.rpm \
+MySQL-shared-5.5.27-1.el6.x86_64.rpm \
+MySQL-shared-compat-5.5.27-1.el6.x86_64.rpm
+
+・必要であればmy.cnfに以下の設定を追加してください
+※5.5系のみ
+# vim /etc/my.cnf
+[mysqld]に以下の行を追加
+character-set-server=utf8mb4
+
+・MySQL起動 & 初期設定
+# service mysql start
+$ mysql_secure_installation
+
+・ユーザ、データベース、テーブル作成
+$ mysql -uroot -p
+mysql> grant all privileges on fluent.* to 'fluent'@'%' identified by 'fluent';
+mysql> create database fluent;
+mysql> exit
+$ mysql -ufluent -p
+mysql> use fluent
+mysql> create table apache_access
+    -> (
+    ->   id int not null auto_increment
+    -> , created_at timestamp not null default current_timestamp
+    -> , json_value longblob
+    -> , primary key (id)
+    -> );
+mysql> create table apache_access2
+    -> (
+    ->   id int not null auto_increment
+    -> , created_at timestamp not null default current_timestamp
+    -> , host varchar(256)
+    -> , user varchar(256)
+    -> , method varchar(256)
+    -> , path varchar(256)
+    -> , code varchar(256)
+    -> , size varchar(256)
+    -> , referer varchar(256)
+    -> , agent varchar(256)
+    -> , primary key (id)
+    -> );
