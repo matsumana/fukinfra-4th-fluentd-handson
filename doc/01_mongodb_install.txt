@@ -8,4 +8,6 @@ enabled=1
 EOF
 # yum check-update
 # yum install mongo-10gen-server
+
+・起動
 # service mongod start

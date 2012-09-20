@@ -13,8 +13,10 @@ MySQL-shared-compat-5.5.27-1.el6.x86_64.rpm
 [mysqld]に以下の行を追加
 character-set-server=utf8mb4
 
-・MySQL起動 & 初期設定
+・起動
 # service mysql start
+
+・初期設定
 $ mysql_secure_installation
 
 ・ユーザ、データベース、テーブル作成
