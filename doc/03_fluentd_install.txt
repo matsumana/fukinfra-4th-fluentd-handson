@@ -1,0 +1,24 @@
+・ディレクトリ作成
+※どこでも良いです
+# mkdir /var/lib/fluent
+# mkdir /var/log/fluent
+# mkdir -p /etc/fluent/plugin
+# chown fluent:fluent /var/lib/fluent
+# chown fluent:fluent /var/log/fluent
+# chown -R fluent:fluent /etc/fluent/plugin
+
+・本体インストール
+# gem install fluentd
+
+・プラグインインストール
+MySQL
+# gem install fluent-plugin-mysql
+PostgreSQL
+# gem install fluent-plugin-pghstore -- --with-pg-dir=/usr/pgsql-9.2
+MongoDB
+# gem install fluent-plugin-mongo
+# gem install bson_ext
+rewrite-tag-filter
+# gem install fluent-plugin-rewrite-tag-filter
+Ruby logger
+# gem install fluent-logger

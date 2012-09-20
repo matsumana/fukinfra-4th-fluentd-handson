@@ -1,0 +1,11 @@
+・インストール
+# yum install httpd
+# chkconfig httpd on
+
+・ログディレクトリのパーミッションを変更
+※今回はFluentdをfluentユーザで起動させるので。
+  デフォルトのパーミッションはroot:rootの700になってます。
+# chmod 755 /var/log/httpd
+
+・起動
+# service httpd start
