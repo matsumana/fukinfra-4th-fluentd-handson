@@ -9,7 +9,8 @@
 # chkconfig postgresql-9.2 on
 # su - postgres
 $ /usr/pgsql-9.2/bin/initdb --no-locale --encoding='UTF-8' --pgdata=/var/lib/pgsql/9.2/data
-$ exit
+
+・起動
 # service postgresql-9.2 start
 
 ・ユーザ、HSTOREエクステンション、データベース、テーブル作成
