@@ -1,0 +1,27 @@
+・Postgres9.2インストール
+# cd /usr/local/src/
+# wget http://yum.postgresql.org/9.2/redhat/rhel-6-x86_64/pgdg-sl92-9.2-7.noarch.rpm
+# rpm -ivh pgdg-sl92-9.2-7.noarch.rpm
+# yum check-update
+# yum install postgresql92-server
+# yum install postgresql92-contrib
+# yum install postgresql92-devel
+# chkconfig postgresql-9.2 on
+# su - postgres
+$ /usr/pgsql-9.2/bin/initdb --no-locale --encoding='UTF-8' --pgdata=/var/lib/pgsql/9.2/data
+$ exit
+# service postgresql-9.2 start
+
+・ユーザ、HSTOREエクステンション、データベース、テーブル作成
+$ psql template1 postgres
+postgres=# create role fluent login password 'fluent';
+postgres=# create extension hstore;
+postgres=# create database fluent;
+postgres-# \q
+$ psql fluent fluent
+fluent=> create table apache_access
+(
+  tag text[]
+, time timestamp with time zone
+, record hstore
+);
