@@ -3,7 +3,7 @@
 
 require 'fluent-logger'
 
-HOST = 'sl00'
+HOST = 'fluent00'
 PORT = 24224
 TAG  = 'debug.test'
 
