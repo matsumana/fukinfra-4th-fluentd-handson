@@ -1,6 +1,9 @@
 「第4回 インフラ勉強会＠福岡 Fluentdハンズオン」で使う設定ファイルとソース
 http://connpass.com/event/879/
 
+GitHubリポジトリ
+http://goo.gl/8zpg7
+
 今回は1台のサーバでFluentdを2つ起動します（ポート:24224, 34224）
 
 etc/fluent/fluent.conf                 -> アプリケーションサーバ用設定ファイル
