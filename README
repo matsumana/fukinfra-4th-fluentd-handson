@@ -9,12 +9,12 @@ http://goo.gl/8zpg7
 今回の設定ファイルには大きく分けて2つの構成が含まれています。
 
 ☆構成その1 (Apahceのアクセスログ収集)
-Web/APサーバでApacheのアクセスログをtailして、集約サーバ側に流す。
-集約サーバ側で受けたログをMySQL, PostgreSQL, MongoDBに保存する。
+Web/APサーバでApacheのアクセスログをtailして、集約サーバに流す。
+集約サーバは受けたログをMySQL, PostgreSQL, MongoDBに保存する。
 
 ☆構成その2 (複数行に渡るログの収集)
-とあるログファイルをtailして、集約サーバ側に流す。
-集約サーバ側で受けたログを標準出力に出力する。
+アプリケーションのログファイルをtailして、集約サーバに流す。
+集約サーバは受けたログを標準出力に出力する。
 
 ・ソースと設定ファイルの説明
 etc/fluent/fluent.conf                 -> アプリケーションサーバ用設定ファイル
@@ -37,6 +37,7 @@ doc/01_mysql_install.txt               -> MySQLのインストール例
 doc/01_postgresql_install.txt          -> PostgreSQLのインストール例
 doc/02_apache_install.txt              -> Apacheのインストール例
 doc/03_fluentd_install.txt             -> Fluentのインストール例
+doc/04_growthforecast.txt              -> GrowthForecastのインストール例
 
 ・今回のハンズオンで使用するサンプルのダウンロードとインストール
 $ git clone git://github.com/matsumana/fukinfra-4th-fluentd-handson.git

@@ -1,0 +1,27 @@
+・依存パッケージインストール
+# yum install pkgconfig glib2-devel gettext libxml2-devel pango-devel cairo-devel perl-ExtUtils-MakeMaker
+
+・ユーザ作成
+# useradd growthforecast
+# passwd growthforecast
+
+・perlbrewとcpanmインストール
+$ curl -kL http://install.perlbrew.pl | bash
+$ echo '[[ -s "$HOME/perl5/perlbrew/etc/bashrc" ]] && source "$HOME/perl5/perlbrew/etc/bashrc"' >> .bash_profile
+$ sed -i "s/manpath -q/manpath/g" ~/perl5/perlbrew/etc/bashrc
+$ source $HOME/perl5/perlbrew/etc/bashrc
+$ perlbrew available
+$ perlbrew install perl-5.17.4
+$ perlbrew install-cpanm
+
+・RRDToolインストール
+$ wget http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Alien-RRDtool-0.03.tar.gz
+$ cpanm Alien-RRDtool-0.03.tar.gz
+
+・GrowthForecastインストール
+$ git clone git://github.com/kazeburo/GrowthForecast.git GrowthForecast
+$ cd GrowthForecast
+$ cpanm --installdeps .
+
+・GrowthForecast起動
+$ perl growthforecast.pl
