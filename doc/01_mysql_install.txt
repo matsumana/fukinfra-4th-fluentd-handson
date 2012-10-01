@@ -22,6 +22,7 @@ $ mysql_secure_installation
 ・ユーザ、データベース、テーブル作成
 $ mysql -uroot -p
 mysql> grant all privileges on fluent.* to 'fluent'@'%' identified by 'fluent';
+mysql> flush privileges;
 mysql> create database fluent;
 mysql> exit
 $ mysql -ufluent -p
